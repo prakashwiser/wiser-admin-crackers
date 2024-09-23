@@ -30,6 +30,7 @@ const AddProduct = () => {
     setImage("");
     setImageData("");
     setListingType("others");
+    
     router.push('/Products')
   };
 

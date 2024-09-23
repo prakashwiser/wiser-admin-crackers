@@ -12,6 +12,7 @@ const Product = () => {
         setAPIData(response.data);
       });
   }, []);
+
   const getData = () => {
     axios
       .get(`https://66ea644a55ad32cda4789858.mockapi.io/crackers`)
@@ -48,7 +49,6 @@ const Product = () => {
                 <Table.HeaderCell>Piece</Table.HeaderCell>
                 <Table.HeaderCell>Image</Table.HeaderCell>
                 <Table.HeaderCell>Category</Table.HeaderCell>
-                {/* <Table.HeaderCell>Update</Table.HeaderCell> */}
                 <Table.HeaderCell>Delete</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -72,7 +72,6 @@ const Product = () => {
                       />
                     </Table.Cell>
                     <Table.Cell>{data.listingType}</Table.Cell>
-                    {/* <Table.Cell><Button className='ui green button' >Update</Button></Table.Cell> */}
                     <Table.Cell>
                       <Button
                         className="ui red button"
@@ -87,7 +86,7 @@ const Product = () => {
             </Table.Body>
           </Table>
         ) : (
-          <>no data</>
+          <>No data</>
         )}
       </div>
       </div>
