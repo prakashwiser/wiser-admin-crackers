@@ -57,9 +57,6 @@ const AddProduct = () => {
       >
         <h2 className="mt-3 mb-4">Add New Products</h2>
         <h2>
-          <Link className="btn btn-success" href="Products">
-            Products
-          </Link>
         </h2>
       </div>
       <form onSubmit={handleSubmit}>

@@ -9,23 +9,31 @@ const Signupp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
-
+  const [id, setId] = useState("2");
   const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (input.name !== "" || input.password !== "")
-      return alert("invaild eamil or password");
-    axios.post("https://66f0f85341537919154f06e7.mockapi.io/signup", {
-      num,
-      email,
-      password,
-    });
-    setNum("");
-    setEmail("");
-    setPassword("");
-    setRepassword("");
-    router.push("/Signin");
+    console.log("hi");
+    if (password == repassword) {
+      if (email == "" && password == "")
+        return alert("invaild eamil or password");
+      axios.post("https://66f0f85341537919154f06e7.mockapi.io/signup", {
+        num,
+        email,
+        password,
+      });
+      setNum("");
+      setEmail("");
+      setPassword("");
+      setRepassword("");
+      router.push("/Signin");
+    } else {
+      alert("Miss Match Password");
+    }
+  };
+  const DeleteData = (id) => {
+    axios.delete(`https://66f0f85341537919154f06e7.mockapi.io/signup/1`);
   };
   return (
     <div className="d-flex flex-column justify-content-center align-items-center vh-100 bg-dark text-white">
@@ -42,7 +50,6 @@ const Signupp = () => {
             placeholder="Enter Number"
             value={num}
             onChange={(e) => setNum(e.target.value)}
-            required
           />
         </div>
 
@@ -57,7 +64,6 @@ const Signupp = () => {
             placeholder="Enter Eamil"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
           />
         </div>
 
@@ -72,7 +78,6 @@ const Signupp = () => {
             placeholder="Enter Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
           />
         </div>
         <div className="mb-3">
@@ -86,14 +91,21 @@ const Signupp = () => {
             id="repassword"
             value={repassword}
             onChange={(e) => setRepassword(e.target.value)}
-            required
           />
         </div>
-        <div className="d-flex justify-content-center my-4">
+        <div className="d-flex justify-content-between my-4">
           <button type="submit" className="btn btn-warning  fw-bold px-4">
             Sign up
           </button>
+          <button
+          onClick={DeleteData}
+          type="submit"
+          className="btn btn-danger  fw-bold px-4"
+        >
+          Delete
+        </button>
         </div>
+       
       </form>
     </div>
   );

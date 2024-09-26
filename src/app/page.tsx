@@ -23,7 +23,7 @@ export default function Home() {
         <div className="d-flex my-5">
           <Link
             className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-3  font-bold rounded"
-            href="Sign"
+            href="Signin"
           >
             Sign in
           </Link>

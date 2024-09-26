@@ -11,7 +11,7 @@ const Signn = () => {
   const [password, setPassword] = useState("");
   const [checkEmail, setCheckEmail] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
- let value
+  const router = useRouter();
   useEffect(() => {
     axios
       .get("https://66f0f85341537919154f06e7.mockapi.io/signup")
@@ -19,16 +19,41 @@ const Signn = () => {
         setApiData(response.data);
       });
   }, []);
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (value) {
-      console.log("good");
-      
+    console.log("email: ", email);
+    console.log("password: ", password);
+
+    if (email) {
+      if (password) {
+        let EmailData = apiData.filter((items) => items.email == email);
+        console.log("db true");
+
+
+
+        if (EmailData.length == 0) {
+          alert("can't see your email, pls register first");
+          router.push("Signup");
+        } 
+        
+        else {
+          if (password == EmailData[0]?.password) {
+            alert("login successfully");
+            router.push("Products");
+          } else {
+            alert("please enter correct password");
+          }
+        }
+
+
+      } else {
+        alert("please fill the password");
+      }
+
     } else {
-      console.log("bad")
+      alert("please fill the email");
     }
-    
   };
 
   return (
@@ -43,8 +68,8 @@ const Signn = () => {
             type="email"
             className="form-control"
             id="email"
+            placeholder="Enter Email"
             onChange={(e) => setEmail(e.target.value)}
-            required
           />
         </div>
         <div className="mb-3">
@@ -53,7 +78,7 @@ const Signn = () => {
             className="form-control"
             id="password"
             onChange={(e) => setPassword(e.target.value)}
-            required
+            placeholder="Enter Password"
           />
         </div>
         <div className="d-flex justify-content-between mt-4">
