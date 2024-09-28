@@ -9,8 +9,6 @@ const Signn = () => {
   const [apiData, setApiData] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [checkEmail, setCheckEmail] = useState("");
-  const [checkPassword, setCheckPassword] = useState("");
   const router = useRouter();
   useEffect(() => {
     axios
@@ -29,15 +27,10 @@ const Signn = () => {
       if (password) {
         let EmailData = apiData.filter((items) => items.email == email);
         console.log("db true");
-
-
-
         if (EmailData.length == 0) {
           alert("can't see your email, pls register first");
           router.push("Signup");
-        } 
-        
-        else {
+        } else {
           if (password == EmailData[0]?.password) {
             alert("login successfully");
             router.push("Products");
@@ -45,12 +38,9 @@ const Signn = () => {
             alert("please enter correct password");
           }
         }
-
-
       } else {
         alert("please fill the password");
       }
-
     } else {
       alert("please fill the email");
     }

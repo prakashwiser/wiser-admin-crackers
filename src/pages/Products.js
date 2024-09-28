@@ -31,7 +31,7 @@ const Product = () => {
   return (
     <>
       
-      <div style={{ display: "flex", justifyContent: "space-between", backgroundColor: 'grey', padding: '10px'}}>
+      <div style={{ display: "flex", justifyContent: "space-around", backgroundColor: 'grey', padding: '10px'}}>
         <div>Product Page</div>
         <Link className="btn btn-success" href="AddProducts">
           Add New Products
